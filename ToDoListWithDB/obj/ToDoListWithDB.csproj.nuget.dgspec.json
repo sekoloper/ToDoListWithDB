@@ -1,0 +1,70 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/semyon/RiderProjects/ToDoListWithDB/ToDoListWithDB/ToDoListWithDB.csproj": {}
+  },
+  "projects": {
+    "/home/semyon/RiderProjects/ToDoListWithDB/ToDoListWithDB/ToDoListWithDB.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/semyon/RiderProjects/ToDoListWithDB/ToDoListWithDB/ToDoListWithDB.csproj",
+        "projectName": "ToDoListWithDB",
+        "projectPath": "/home/semyon/RiderProjects/ToDoListWithDB/ToDoListWithDB/ToDoListWithDB.csproj",
+        "packagesPath": "/home/semyon/.nuget/packages/",
+        "outputPath": "/home/semyon/RiderProjects/ToDoListWithDB/ToDoListWithDB/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/semyon/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net10.0"
+        ],
+        "sources": {
+          "/usr/lib64/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net10.0": {
+            "framework": "net10.0",
+            "targetAlias": "net10.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net10.0": {
+          "framework": "net10.0",
+          "targetAlias": "net10.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/10.0.110/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
