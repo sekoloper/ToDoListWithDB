@@ -2,8 +2,11 @@
 
 class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        using var context = new AppDbContext();
+        var taskService =  new TaskService(context);
+        int actionIndex;
+        
     }
 }

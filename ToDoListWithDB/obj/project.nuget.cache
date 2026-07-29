@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "gdS6X49j1D8=",
+  "dgSpecHash": "x5q47O+WjZ0=",
   "success": true,
   "projectFilePath": "/home/semyon/RiderProjects/ToDoListWithDB/ToDoListWithDB/ToDoListWithDB.csproj",
   "expectedPackageFiles": [
@@ -49,7 +49,7 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "У пакета \"SQLitePCLRaw.lib.e_sqlite3\" 2.1.11 есть известная уязвимость https://github.com/advisories/GHSA-2m69-gcr7-jv3q (уровень серьезности: высокий)",
+      "message": "Package 'SQLitePCLRaw.lib.e_sqlite3' 2.1.11 has a known high severity vulnerability, https://github.com/advisories/GHSA-2m69-gcr7-jv3q",
       "projectPath": "/home/semyon/RiderProjects/ToDoListWithDB/ToDoListWithDB/ToDoListWithDB.csproj",
       "warningLevel": 1,
       "filePath": "/home/semyon/RiderProjects/ToDoListWithDB/ToDoListWithDB/ToDoListWithDB.csproj",
