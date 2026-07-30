@@ -49,7 +49,7 @@ public class TaskService
         return await _context.Tasks.ToListAsync();
     }
     
-    public async Task<List<TaskItem>> GetPendingTaskAsync()
+    public async Task<List<TaskItem>> GetPendingTasksAsync()
     {
         return await _context.Tasks.Where(t => !t.IsDone).ToListAsync();
     }

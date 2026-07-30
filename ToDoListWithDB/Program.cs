@@ -24,11 +24,11 @@ class Program
                 {
                     case 1: await AddNewTaskAsync(taskService); break;
                     case 2: await ShowAllTasksAsync(taskService); break;
-                    //case 3: await CompleteTaskAsync(taskService); break;
-                    //case 4: await DeleteTaskAsync(taskService); break;
-                    //case 5: await ShowPendingTasksAsync(taskService); break;
-                    //case 6: await AddNewCategoryAsync(taskService); break;
-                    //case 0: break;
+                    case 3: await CompleteTaskAsync(taskService); break;
+                    case 4: await DeleteTaskAsync(taskService); break;
+                    case 5: await ShowPendingTasksAsync(taskService); break;
+                    case 6: await AddNewCategoryAsync(taskService); break;
+                    case 0: break;
                     default: Console.WriteLine("Invalid input"); break;
                 }
             }
@@ -73,5 +73,61 @@ class Program
                 Console.WriteLine($"{task.Id}: {task.Title}");
             }
         }
+    }
+
+    static async Task CompleteTaskAsync(TaskService taskService)
+    {
+        Console.WriteLine("Enter the id of the task you want to complete:");
+        if (int.TryParse(Console.ReadLine(), out int id))
+        {
+            try
+            {
+                await taskService.CompleteTaskAsync(id);
+                Console.WriteLine($"Task {id} is completed.");
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        else
+            Console.WriteLine("Invalid input.");
+    }
+
+    static async Task DeleteTaskAsync(TaskService taskService)
+    {
+        Console.WriteLine("Enter the id of the task you want to delete:");
+        if (int.TryParse(Console.ReadLine(), out int id))
+        {
+            try
+            {
+                await taskService.DeleteTaskAsync(id);
+                Console.WriteLine($"Task {id} is deleted.");
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        else
+            Console.WriteLine("Invalid input.");
+    }
+
+    static async Task ShowPendingTasksAsync(TaskService taskService)
+    {
+        foreach (var task in await taskService.GetPendingTasksAsync())
+            Console.WriteLine($"{task.Id}: {task.Title}");
+    }
+
+    static async Task AddNewCategoryAsync(TaskService taskService)
+    {
+        Console.WriteLine("Enter the category name:");
+        string? categoryName = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(categoryName))
+        {
+            Console.WriteLine("Category name cannot be empty");
+            return;
+        }
+        await taskService.AddCategoryAsync(categoryName);
     }
 }
