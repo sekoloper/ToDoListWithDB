@@ -11,7 +11,7 @@ public class TaskService
         _context = context;
     }
 
-    public async Task<TaskItem> AddTaskAsunc(string title, int categoryId)
+    public async Task<TaskItem> AddTaskAsync(string title, int categoryId)
     {
         var task = new TaskItem
         {
@@ -57,5 +57,18 @@ public class TaskService
     public async Task<List<TaskItem>> GetTasksByCategoryAsync(int categoryId)
     {
         return await _context.Tasks.Where(t => t.CategoryId == categoryId).ToListAsync();
+    }
+    
+    public async Task<Category> AddCategoryAsync(string name)
+    {
+        var category = new Category { Name = name };
+        _context.Categories.Add(category);
+        await _context.SaveChangesAsync();
+        return category;
+    }
+    
+    public async Task<bool> CategoryExistsAsync(int categoryId)
+    {
+        return await _context.Categories.AnyAsync(c => c.Id == categoryId);
     }
 }
