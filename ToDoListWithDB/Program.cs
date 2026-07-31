@@ -16,6 +16,7 @@ class Program
             Console.WriteLine("4 - Delete task");
             Console.WriteLine("5 - Show pending task");
             Console.WriteLine("6 - Add new category");
+            Console.WriteLine("7 - Show tasks by the category");
             Console.WriteLine("0 - Exit");
             Console.WriteLine("Enter the action index:");
             if (int.TryParse(Console.ReadLine(), out actionIndex))
@@ -28,6 +29,7 @@ class Program
                     case 4: await DeleteTaskAsync(taskService); break;
                     case 5: await ShowPendingTasksAsync(taskService); break;
                     case 6: await AddNewCategoryAsync(taskService); break;
+                    case 7: await ShowTasksByCategoryAsync(taskService); break;
                     case 0: break;
                     default: Console.WriteLine("Invalid input"); break;
                 }
@@ -121,6 +123,27 @@ class Program
     {
         foreach (var task in await taskService.GetPendingTasksAsync())
             Console.WriteLine($"{task.Category.Name} | {task.Id}: {task.Title}");
+    }
+
+    static async Task ShowTasksByCategoryAsync(TaskService taskService)
+    {
+        Console.WriteLine("Available categories:");
+        foreach (var category in await taskService.GetAllCategoriesAsync())
+            Console.WriteLine($"{category.Id}: {category.Name}");
+        
+        Console.WriteLine("Enter the id of category of the task:");
+        if (int.TryParse(Console.ReadLine(), out int categoryId))
+        {
+            if (await taskService.CategoryExistsAsync(categoryId))
+                foreach (var task in await taskService.GetTasksByCategoryAsync(categoryId))
+                {
+                    Console.WriteLine($"{task.Category.Name} | {task.Id}: {task.Title}");
+                }
+            else
+                Console.WriteLine($"The category with id {categoryId} not found");
+        }
+        else 
+            Console.WriteLine("Invalid input");
     }
 
     static async Task AddNewCategoryAsync(TaskService taskService)

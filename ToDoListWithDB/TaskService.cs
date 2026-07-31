@@ -56,12 +56,12 @@ public class TaskService
     
     public async Task<List<TaskItem>> GetPendingTasksAsync()
     {
-        return await _context.Tasks.Where(t => !t.IsDone).ToListAsync();
+        return await _context.Tasks.Where(t => !t.IsDone).Include(t => t.Category).ToListAsync();
     }
 
     public async Task<List<TaskItem>> GetTasksByCategoryAsync(int categoryId)
     {
-        return await _context.Tasks.Where(t => t.CategoryId == categoryId).ToListAsync();
+        return await _context.Tasks.Where(t => t.CategoryId == categoryId).Include(t => t.Category).ToListAsync();
     }
     
     public async Task<Category> AddCategoryAsync(string name)

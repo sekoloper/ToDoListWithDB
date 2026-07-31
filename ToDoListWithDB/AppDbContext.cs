@@ -11,7 +11,6 @@ public class AppDbContext : DbContext
     {
         string projectDir = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", ".."));
         string dbPath = Path.Combine(projectDir, "tasks.db");
-        Console.WriteLine($"dbPath: {dbPath}");
         optionsBuilder.UseSqlite($"Data Source={dbPath}");
     }
 }
