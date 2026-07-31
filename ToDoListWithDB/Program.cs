@@ -50,6 +50,10 @@ class Program
             return;
         }
         
+        Console.WriteLine("Available categories:");
+        foreach (var category in await taskService.GetAllCategoriesAsync())
+            Console.WriteLine($"{category.Id}: {category.Name}");
+        
         Console.WriteLine("Enter the id of category of the task:");
         if (int.TryParse(Console.ReadLine(), out int categoryId))
         {
@@ -67,10 +71,10 @@ class Program
         foreach (var task in await taskService.GetAllTasksAsync())
         {
             if (task.IsDone)
-                Console.WriteLine($"{task.Id}: {task.Title} [completed]");
+                Console.WriteLine($"{task.Category.Name} | {task.Id}: {task.Title} [completed]");
             else
             {
-                Console.WriteLine($"{task.Id}: {task.Title}");
+                Console.WriteLine($"{task.Category.Name} | {task.Id}: {task.Title}");
             }
         }
     }
@@ -116,7 +120,7 @@ class Program
     static async Task ShowPendingTasksAsync(TaskService taskService)
     {
         foreach (var task in await taskService.GetPendingTasksAsync())
-            Console.WriteLine($"{task.Id}: {task.Title}");
+            Console.WriteLine($"{task.Category.Name} | {task.Id}: {task.Title}");
     }
 
     static async Task AddNewCategoryAsync(TaskService taskService)

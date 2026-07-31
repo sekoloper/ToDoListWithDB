@@ -46,7 +46,12 @@ public class TaskService
 
     public async Task<List<TaskItem>> GetAllTasksAsync()
     {
-        return await _context.Tasks.ToListAsync();
+        return await _context.Tasks.Include(t => t.Category).ToListAsync();
+    }
+
+    public async Task<List<Category>> GetAllCategoriesAsync()
+    {
+        return await _context.Categories.ToListAsync();
     }
     
     public async Task<List<TaskItem>> GetPendingTasksAsync()

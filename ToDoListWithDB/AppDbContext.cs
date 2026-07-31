@@ -9,6 +9,9 @@ public class AppDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=tasks.db");
+        string projectDir = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", ".."));
+        string dbPath = Path.Combine(projectDir, "tasks.db");
+        Console.WriteLine($"dbPath: {dbPath}");
+        optionsBuilder.UseSqlite($"Data Source={dbPath}");
     }
 }
